@@ -1,0 +1,245 @@
+/* admin/admin-style.css */
+
+/* ========================================================
+   📦 1. CORE RESET & VARIABLE DEFINITIONS
+   ======================================================== */
+:root {
+    --primary-orange: #FF7043;
+    --primary-hover: #E55E35;
+    --primary-light: #FFF3E0;
+    --sidebar-bg: #1A202C;
+    --sidebar-hover: #2D3748;
+    --body-bg: #F7FAFC;
+    --card-bg: #FFFFFF;
+    --text-main: #2D3748;
+    --text-muted: #718096;
+    --border-color: #E2E8F0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background-color: var(--body-bg);
+    color: var(--text-main);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ========================================================
+   🏰 2. SIDEBAR NAVIGATION WRAPPER CONTROL
+   ======================================================== */
+.sidebar {
+    position: fixed;
+    top: 65px; /* Offset exactly down past your new 65px top navbar layer */
+    left: 0;
+    width: 260px;
+    height: calc(100vh - 65px); /* Spans completely down to base disk window limits */
+    background-color: var(--sidebar-bg);
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    z-index: 999; /* Sits beneath top navbar panel securely */
+    transition: all 0.3s ease;
+}
+
+/* Hidden Brand text fallback inside admin view script files */
+.sidebar .brand {
+    padding: 0 24px 20px 24px;
+    font-size: 20px;
+    font-weight: 800;
+    color: #FFFFFF;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    margin-bottom: 15px;
+    display: none; /* Hidden because brand now registers permanently inside top navbar */
+}
+.sidebar .brand span {
+    color: var(--primary-orange);
+}
+
+/* Sidebar Option Anchors Matrix */
+.sidebar a {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 24px;
+    color: #A0AEC0;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.sidebar a .material-icons {
+    font-size: 22px;
+    color: #718096;
+    transition: color 0.2s ease;
+}
+
+/* Hover States Rules */
+.sidebar a:hover {
+    background-color: var(--sidebar-hover);
+    color: #FFFFFF;
+}
+.sidebar a:hover .material-icons {
+    color: var(--primary-orange);
+}
+
+/* Active Highlight Filter State Tag */
+.sidebar a.active {
+    background-color: rgba(255, 112, 67, 0.1);
+    color: var(--primary-orange);
+    border-left: 4px solid var(--primary-orange);
+    padding-left: 20px; /* Adjust padding layout to keep inline margins uniform */
+}
+.sidebar a.active .material-icons {
+    color: var(--primary-orange);
+}
+
+/* ========================================================
+   🖥️ 3. CORE CONTENT PANEL WORKSPACE GRID
+   ======================================================== */
+.main-content {
+    margin-left: 260px; /* Pushes content out perfectly past the left sidebar boundary */
+    padding: 40px;
+    min-height: calc(100vh - 65px);
+    box-sizing: border-box;
+}
+
+/* Dashboard Top Header Description */
+.top-header {
+    margin-bottom: 35px;
+}
+.top-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 6px;
+}
+
+/* ========================================================
+   📊 4. ANALYTICS METRICS CARDS GENERATOR
+   ======================================================== */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-bottom: 35px;
+}
+
+.metric-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.01);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.metric-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.04);
+}
+
+/* Metric Round Icon Wrappers Layout */
+.metric-card .icon-wrapper {
+    width: 56px;
+    height: 56px;
+    border-radius: 10px;
+    background-color: var(--primary-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.metric-card .icon-wrapper .material-icons {
+    font-size: 26px;
+    color: var(--primary-orange);
+}
+
+.metric-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.metric-info h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.metric-info p {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-main);
+    line-height: 1;
+}
+
+/* ========================================================
+   📰 5. WELCOME CONSOLE CONTENT CARDS
+   ======================================================== */
+.content-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 35px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+}
+
+.content-card h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 12px;
+}
+
+.content-card p {
+    font-size: 15px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    max-width: 800px;
+}
+
+/* ========================================================
+   📱 6. RESPONSIVE MOBILE MEDIA ADAPTATION LAYER
+   ======================================================== */
+@media (max-width: 991px) {
+    .sidebar {
+        width: 70px;
+    }
+    .sidebar a span:not(.material-icons) {
+        display: none; /* Hide descriptions text loop on narrow viewport sizes */
+    }
+    .sidebar a {
+        justify-content: center;
+        padding: 16px 0;
+    }
+    .main-content {
+        margin-left: 70px;
+        padding: 25px;
+    }
+}
+
+@media (max-width: 576px) {
+    .metrics-grid {
+        grid-template-columns: 1fr;
+    }
+    .main-header .brand-text {
+        font-size: 15px;
+    }
+    .panel-tag {
+        display: none;
+    }
+}

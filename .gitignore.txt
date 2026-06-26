@@ -1,0 +1,12 @@
+# Ignore local development uploads
+assets/images/uploads/*
+uploads/*
+
+# Ignore OS files
+Thumbs.db
+.DS_Store
+
+# Ignore XAMPP / text editor configurations
+.vscode/
+.idea/
+*.log
